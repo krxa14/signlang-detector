@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SignLang Recognition</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; background: #0d1117; color: #e6edf3; }
+    header { padding: 16px 24px; background: #161b22; border-bottom: 1px solid #30363d; display:flex; justify-content: space-between; align-items: center;}
+    header h1 { margin: 0; font-size: 20px; }
+    .container { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; padding: 16px; }
+    .panel { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; }
+    #video-wrap { position: relative; }
+    video, canvas#overlay { border-radius: 6px; width: 100%; max-width: 640px; }
+    canvas#overlay { position: absolute; top: 0; left: 0; pointer-events: none; }
+    .pred-label { font-size: 48px; font-weight: 700; margin: 8px 0; color: #58a6ff; min-height: 56px;}
+    .sentence { font-size: 18px; margin: 8px 0; padding: 8px; background: #0d1117; border-radius: 4px; min-height: 40px;}
+    .lang-toggle button { background: #238636; color: white; border: none; padding: 8px 12px; margin-right: 8px; border-radius: 4px; cursor: pointer; }
+    .lang-toggle button.inactive { background: #30363d; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { padding: 6px 8px; text-align: left; border-bottom: 1px solid #30363d; }
+    .controls button { background: #1f6feb; color: white; border: none; padding: 10px 16px; border-radius: 4px; cursor: pointer; margin-right: 8px; }
+    .status { font-size: 12px; color: #7d8590; }
+    .bottom { padding: 0 16px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>SignLang Recognition System</h1>
+  <div class="status" id="status">disconnected</div>
+</header>
+
+<div class="container">
+  <div class="panel">
+    <div id="video-wrap">
+      <video id="video" autoplay playsinline muted width="640" height="480"></video>
+      <canvas id="overlay" width="640" height="480"></canvas>
+    </div>
+    <div class="controls" style="margin-top: 12px;">
+      <button id="start">Start Stream</button>
+      <button id="stop">Stop</button>
+      <button id="reset">Reset Sentence</button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Current Prediction</h3>
+    <div class="pred-label" id="label">—</div>
+    <div>Confidence: <span id="confidence">0</span></div>
+
+    <h3 style="margin-top:20px;">Sentence</h3>
+    <div class="sentence" id="sentence"></div>
+
+    <h3>Regional Translation</h3>
+    <div class="lang-toggle">
+      <button data-lang="telugu">Telugu</button>
+      <button data-lang="tamil" class="inactive">Tamil</button>
+    </div>
+    <div class="sentence" id="translation" style="margin-top: 8px;"></div>
+  </div>
+</div>
+
+<div class="bottom">
+  <div class="panel">
+    <h3>Recent Predictions</h3>
+    <table>
+      <thead><tr><th>Time</th><th>Label</th><th>Conf</th><th>Model</th></tr></thead>
+      <tbody id="history"></tbody>
+    </table>
+  </div>
+  <div class="panel">
+    <h3>Top Predicted Signs</h3>
+    <canvas id="topChart" height="180"></canvas>
+  </div>
+</div>
+
+<script src="/static/stream.js"></script>
+<script src="/static/analytics.js"></script>
+</body>
+</html>

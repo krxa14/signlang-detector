@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "signlang-detector"
+version = "1.0.0"
+description = "Multi-model American Sign Language recognition (YOLOv8 + CNN + RF) with FastAPI + WebSocket + SQLite + web UI."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Pranav Goriparthi" }]
+keywords = ["sign-language", "yolov8", "ensemble", "mediapipe", "fastapi"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::UserWarning",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = ["American-sign-language-2", "runs", "notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]

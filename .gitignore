@@ -1,0 +1,52 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# --- Envs ---
+.env
+.venv/
+env/
+venv/
+ENV/
+.python-version
+
+# --- Editors ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Project: large/runtime artifacts ---
+American-sign-language-2/
+runs/
+models/weights/*.pt
+models/weights/*.joblib
+data/keypoints.csv
+database/*.db
+database/*.sqlite*
+results/*.json
+results/*.csv
+!results/.gitkeep
+yolov8n.pt
+*.onnx
+*.tflite
+
+# --- Logs ---
+*.log
+logs/
