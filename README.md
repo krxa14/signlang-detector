@@ -9,9 +9,6 @@ End-to-end American Sign Language recognition: **YOLOv8 detection + PyTorch CNN 
 
 hello hello hello hello hello hello hello hello hello
 
-
-
-
 Runs entirely on CPU (tested on Apple M4).
 
 ## Architecture
