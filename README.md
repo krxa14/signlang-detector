@@ -7,8 +7,6 @@
 
 End-to-end American Sign Language recognition: **YOLOv8 detection + PyTorch CNN + Random Forest on MediaPipe keypoints**, fused via weighted-vote ensemble, exposed through a FastAPI service with WebSocket real-time streaming, SQLite analytics, and a vanilla-JS web UI with English / Telugu / Tamil translation.
 
-hello hello hello  
-
 Runs entirely on CPU (tested on Apple M4).
 
 ## Architecture
