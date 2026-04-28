@@ -2,7 +2,6 @@
 
 HELLO 
 HELLO HELLO
-HELLO HELLO HELLO  
 
 
 [![Python](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
